@@ -1,0 +1,77 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Personal Portfolio{% else %}Welcome to my Personal Portfolio{% endif %}
+{% endblock %}
+
+{% block navbar %}
+
+<!-- Code for navbar design
+     Taken from The Flask Mega Tutorial by Miguel Grinberg
+     Accessed on 18/10/2023
+     https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xi-facelift
+-->
+    <nav class="navbar navbar-default">
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}">Alec Cook Portfolio</a>
+            </div>
+<!--End of referenced code-->
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                    <li><a href="{{ url_for('education') }}">Education</a></li>
+                    <li><a href="{{ url_for('work_experience') }}">Work Experience</a></li>
+                    <li><a href="{{ url_for('computing') }}">MSc Computing</a></li>
+                    <li><a href="{{ url_for('code_examples') }}">Code Examples</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
+                    {% if current_user.is_admin %}
+                    <li><a href = "/admin">Admin</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
+
+<!-- Code for displaying datetime for user comments
+     Taken from The Flask Mega Tutorial by Miguel Grinberg
+     Accessed on 18/10/2023
+     https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xii-dates-and-times
+-->
+{% block scripts %}
+    {{ super()  }}
+    {{ moment.include_moment() }}
+{% endblock %}
+<!--End of referenced code-->

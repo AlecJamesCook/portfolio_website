@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    <h1>Register</h1>
+    <p class = "medium_text">We just need some pieces of information from you to create your account. Don't worry, we won't use your personal information for anything nefarious or send you any annoying emails.</p>
+    <p class = "medium_text">Your password should be between 8 and 16 characters long and contain at least one of the following:</p>
+    <ul class = "medium_text">
+        <li>One Uppercase letter</li>
+        <li>One Lowercase Letter</li>
+        <li>One digit</li>
+        <li>One of the following symbols: @#$!£$%</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+
+{% endblock %}

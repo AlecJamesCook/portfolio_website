@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+    <h1>Education</h1>
+
+    <p class = "medium_text">This page lists out my educational history, from my GCSES' right up to the my current MSc programme. It shows what institutions I attended, when I attended, what subjects I studied, and what grade I recieved, along with a short description of some of the courses.</p>
+    <hr>
+
+    <p>{{ education_1.time_period }}</p>
+    <div class = "school_name">
+    <p>{{ education_1.school_name }}</p>
+    </div>
+    <figure class = "school_figure">
+        <!--Image used under creative commons license. Found here: https://commons.wikimedia.org/wiki/File:Cardiff-University-main.JPG -->
+        <img class = "school_photo" src = "{{ url_for('static', filename='img/' + education_1_photo) }}" alt = "Cardiff University Building">
+    </figure>
+    <p class = "medium_text"><strong>{{ education_1.qualifications }}</strong></p>
+    <p class = "medium_text">{{ education_1.subject_1 }}</p>
+    <div class = "subject_desc">
+        <p>{{ education_1.subject_1_desc}}</p>
+    </div>
+    <p class = "medium_text">For more information, please visit this <a href = "computing">this page.</a></p>
+    <hr>
+
+    <p>{{ education_2.time_period }}</p>
+    <div class = "school_name">
+    <p>{{ education_2.school_name }}</p>
+    </div>
+    <figure class = "school_figure">
+        <!--Image used under creative commons license. Found here: https://commons.wikimedia.org/wiki/File:Swansea_University_College_of_Engineering.png  -->
+        <img class = "school_photo" src = "{{ url_for('static', filename='img/' + education_2_photo) }}" alt = "Swansea University building" >
+    </figure>
+    <p class = "medium_text"><strong>{{ education_2.qualifications }}</strong></p>
+    <p class = "medium_text">{{ education_2.subject_1 }}</p>
+    <div class = "subject_desc">
+        <p>{{ education_2.subject_1_desc}}</p>
+    </div>
+    <hr>
+
+    <p>{{ education_3.time_period }}</p>
+    <div class = "school_name">
+    <p>{{ education_3.school_name }}</p>
+    </div>
+    <figure class = "school_figure">
+        <!--Image used under creative commons license. Found here: https://www.geograph.org.uk/photo/2419255 -->
+        <img class = "school_photo" src = "{{ url_for('static', filename='img/' + education_3_photo) }}" alt = "Coleg Gwent Building">
+    </figure>
+    <p class = "medium_text"><strong>{{ education_3.qualifications }}</strong></p>
+    <p class = "medium_text">{{ education_3.subject_1 }}</p>
+    <div class = "subject_desc">
+        <p>{{ education_3.subject_1_desc}}</p>
+    </div>
+    <p class = "medium_text">{{ education_3.subject_2 }}</p>
+    <div class = "subject_desc">
+        <p>{{ education_3.subject_2_desc}}</p>
+    </div>
+    <p class = "medium_text">{{ education_3.subject_3 }}</p>
+    <div class = "subject_desc">
+        <p>{{ education_3.subject_3_desc}}</p>
+    </div>
+
+    <hr>
+
+    <p>{{ education_4.time_period }}</p>
+    <div class = "school_name">
+    <p>{{ education_4.school_name }}</p>
+    </div>
+    <figure class = "school_figure">
+        <!--Image used under creative commons license. Found here: https://www.geograph.org.uk/photo/3526600 -->
+        <img class = "school_photo" src = "{{ url_for('static', filename='img/' + education_4_photo) }}" alt = "Abertillery Comprehensive building">
+    </figure>
+    <p class = "medium_text"><strong>{{ education_4.qualifications }}</strong></p>
+    <p class = "medium_text">{{ education_4.subject_1 }}</p>
+    <p class = "medium_text">{{ education_4.subject_2 }}</p>
+    <p class = "medium_text">{{ education_4.subject_3 }}</p>
+    <p class = "medium_text">{{ education_4.subject_4 }}</p>
+    <p class = "medium_text">{{ education_4.subject_5 }}</p>
+    <p class = "medium_text">{{ education_4.subject_6 }}</p>
+    <p class = "medium_text">{{ education_4.subject_7 }}</p>
+    <p class = "medium_text">{{ education_4.subject_8 }}</p>
+    <p class = "medium_text">{{ education_4.subject_9 }}</p>
+    <p class = "medium_text">{{ education_4.subject_10 }}</p>
+{% endblock %}

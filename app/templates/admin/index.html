@@ -1,0 +1,12 @@
+{% extends'admin/master.html' %}
+
+{% block body %}
+
+{% if current_user.is_admin %}
+<p>Welcome to the admin panel {{ current_user.username }}!</p>
+<p>To go back to the website, click <a href = "{{ url_for('index') }}">here</a>.</p>
+{% else %}
+<p>Access denied! You must be an administrator to view this page &nbsp|<a href="{{ url_for('login') }}">Login&nbsp;</a></p>
+{% endif %}
+
+{% endblock %}

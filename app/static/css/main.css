@@ -1,0 +1,84 @@
+.medium_text{
+    font-size: medium;
+}
+
+.introduction{
+    font-size: medium;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.indent{
+    text-indent: 20px;
+}
+
+/*~~~~~ WORK EXPERIENCE ~~~~~*/
+
+.company_name{
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.job_description{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
+}
+
+.work_figure{
+    position: relative;
+    top:-70px;
+    float:right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.work_photo{
+border-radius: 25px;
+border: 4px solid;
+}
+
+/*~~~~~ EDUCATION ~~~~~*/
+
+.school_name{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.subject_desc{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: medium;
+}
+
+.school_figure{
+    position: relative;
+    top:-65px;
+    float:right;
+    padding-left: 30px;
+}
+
+.school_photo{
+    border: 4px solid;
+    border-radius: 15px 50px;
+}
+
+/*~~~~~ COMPUTING ~~~~~*/
+.module_name{
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.module_description{
+    padding: 10px;
+    font-size: medium;
+}
+
+/*~~~~~ CODE EXAMPLES ~~~~~*/
+
+.function_description{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: medium;
+}

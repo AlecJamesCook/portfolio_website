@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+<body>
+
+    <h1>Hi, {{ current_user.username }}! Thanks for visiting my website</h1>
+
+    <p class = "introduction">This website is intended to serve as an online portfolio of sorts. It is a chance for me to showcase some of my education, skills, and experience. The majority of the website is 'dynamic', meaning that the content you will be seeing is being pulled from a database. As you'll find out, a few of the websites features also allow you to push content to a database.</p>
+
+    <h4><strong>The website has five pages for you to browse through: </strong></h4>
+
+    <ul class = "medium_text">
+        <li>If you are interested in checking out your profile page (where you can view your post history on this website, and add a bit more information about yourself) please click <a href="{{ url_for('user', username=current_user.username) }}">here</a>.</li>
+        <li>If you are interested in finding out more details about my previous qualifications and education, please click <a href = "{{ url_for('education') }}">here</a>.</li>
+        <li>If you are interested in finding out more about my previous work experience, please click <a href = "{{ url_for('work_experience') }}">here</a>.</li>
+        <li>If you are interested in learning more about my current studies, please click <a href = "{{ url_for('computing') }}">here</a>.</li>
+        <li>If you would like to see some examples of some code I have written, please click <a href="{{ url_for('code_examples') }}">here</a>.</li>
+    </ul>
+
+    <p class = "medium_text">Or you could just use the navigation bar at the top. Thanks for visiting!</p>
+    <p class = "medium_text"><strong>Get in touch: </strong></p>
+    <ul class= "medium_text">
+        <li>Email: CookAj1@cardiff.ac.uk</li>
+        <li><a href = "https://www.linkedin.com/in/alec-cook/">LinkedIn</a></li>
+        <li><a href = "https://www.facebook.com/alec.cook.397">Facebook</a></li>
+        <li><a href = "https://twitter.com/AlecCook92">Twitter</a></li>
+    </ul>
+</body>
+
+{% endblock %}

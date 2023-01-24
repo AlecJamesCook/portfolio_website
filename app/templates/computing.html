@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+    <h1>MSc Computing</h1>
+    <p class = "medium_text">This page lays out the details of the MSc programme that I am currently enrolled at. Cardiff University's MSc Computing is a conversion course designed for people from non-computer science programmes like myself. I hope that by taking a look at the modules that I will have to complete by the end of the programme, you will be able to get a little feel of the intensity of the course and the breadth and depth of the topics that I will be utilising in my future work. Each module outline comes with a description, a list of key skills taught in the module, and the ways in which we are assessed</p>
+    <hr>
+
+    <p>{{ module_1.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_1.module_name }}</p>
+    </div>
+    <p>{{ module_1.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_1.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_1.skill_1 }}</li>
+        <li>{{ module_1.skill_2 }}</li>
+        <li>{{ module_1.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_1.assessment_1}}</li>
+    </ul>
+    <a href = "{{ module_1.link }}">Link to full description</a>
+    <hr>
+
+    <p>{{ module_2.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_2.module_name }}</p>
+    </div>
+    <p>{{ module_2.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_2.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_2.skill_1 }}</li>
+        <li>{{ module_2.skill_2 }}</li>
+        <li>{{ module_2.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_2.assessment_1}}</li>
+        <li>{{ module_2.assessment_2 }}</li>
+    </ul>
+    <a href = "{{ module_2.link }}">Link to full description</a>
+    <hr>
+
+    <p>{{ module_3.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_3.module_name }}</p>
+    </div>
+    <p>{{ module_3.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_3.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_3.skill_1 }}</li>
+        <li>{{ module_3.skill_2 }}</li>
+        <li>{{ module_3.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_3.assessment_1}}</li>
+        <li>{{ module_3.assessment_2 }}</li>
+    </ul>
+    <a href = "{{ module_3.link }}">Link to full description</a>
+    <hr>
+
+    <p>{{ module_4.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_4.module_name }}</p>
+    </div>
+    <p>{{ module_4.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_4.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_4.skill_1 }}</li>
+        <li>{{ module_4.skill_2 }}</li>
+        <li>{{ module_4.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_4.assessment_1}}</li>
+        <li>{{ module_4.assessment_2 }}</li>
+    </ul>
+    <a href = "{{ module_4.link }}">Link to full description</a>
+    <hr>
+
+    <p>{{ module_5.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_5.module_name }}</p>
+    </div>
+    <p>{{ module_5.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_5.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_5.skill_1 }}</li>
+        <li>{{ module_5.skill_2 }}</li>
+        <li>{{ module_5.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_5.assessment_1}}</li>
+    </ul>
+    <a href = "{{ module_5.link }}">Link to full description</a>
+    <hr>
+
+    <p>{{ module_6.module_code}}</p>
+    <div class = "module_name">
+        <p>{{ module_6.module_name }}</p>
+    </div>
+    <p>{{ module_6.module_leader }}</p>
+    <div class = "module_description">
+        <p>{{ module_6.module_description }}</p>
+    </div>
+    <h4><strong>Key Skills</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_6.skill_1 }}</li>
+        <li>{{ module_6.skill_2 }}</li>
+        <li>{{ module_6.skill_3 }}</li>
+    </ul>
+    <h4><strong>Assessment</strong></h4>
+    <ul class = "medium_text">
+        <li>{{ module_6.assessment_1}}</li>
+        <li>{{ module_6.assessment_2 }}</li>
+    </ul>
+    <a href = "{{ module_6.link }}">Link to full description</a>
+    <hr>
+
+{% endblock %}

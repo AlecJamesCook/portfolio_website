@@ -1,0 +1,278 @@
+{% extends "layout.html" %}
+{% block app_content %}
+    <body>
+        <h1>Code</h1>
+        <p class = "medium_text">I took the opportunity on this page to show off a bit of my programming achievments to date. As part of my MSc programme, we were tasked with solving 10 increasingly complex programming challenges in both Python and JavaScript. Through a lot of blood, sweat, and tears I managed to complete all 10 challenges, and I have cherrypicked three of my solutions to the harder/more useful challenges and repurposed them as web applications. Please try them out for yourself and peruse the code that I wrote myself.</p>
+        <hr>
+
+    <!-- ##### EXAMPLE 1 ##### -->
+
+        <h2>{{ code_example_1.function_name }}</h2>
+        <div class = "function_description">
+            <p>{{ code_example_1.function_desc }}</p>
+        </div>
+        <h4><strong>Parameters</strong></h4>
+        <p class = "medium_text">{{ code_example_1.param_1_name }}</p>
+        <p class = "medium_text indent">{{ code_example_1.param_1_desc }}</p>
+        <p class = "medium_text">{{ code_example_1.param_2_name }}</p> 
+        <p class = "medium_text indent">{{ code_example_1.param_2_desc }}</p>
+        <h4><strong>Return</strong></h4>
+        <p class = "medium_text">{{ code_example_1.return_type_name }}: {{code_example_1.return_type_desc }}</p>
+
+        <pre>
+            <code class="language-python">
+                def change_please(amount,coins):
+
+                    # Times the amount by 100 to avoid floating point number shenanigans.
+                    amount *= 100
+                    coin_list = [200, 100, 50, 20, 10, 5, 2, 1]
+
+                    if coins < 1:
+                        return False
+
+                    def recursive_loop(amount, coins, coin_list):
+
+                        # The basecases for the recursive loop.
+                        if amount == 0 and coins == 0:
+                            return True
+                        elif amount != 0 and coins == 0:
+                            return False
+                        elif amount == 0 and coins != 0:
+                            return False
+
+                        for element in coin_list:
+                            if element <= amount:
+
+                                if recursive_loop((amount - element), (coins-1), coin_list):
+                                    return True
+
+                        return False
+
+                    return recursive_loop(amount, coins, coin_list)
+            </code>
+        </pre>
+
+        <form action="" method="post">
+            {{ code_example_1_form.csrf_token }}
+            <p>
+                {{ code_example_1_form.amount.label }}<br>
+                {{ code_example_1_form.amount }}<br>
+            </p>
+            <p>
+                {{ code_example_1_form.coins.label }}<br>
+                {{ code_example_1_form.coins }}
+            </p>
+            <p>{{ code_example_1_form.submit() }}</p>
+        </form>
+
+        <p><strong>Result:</strong> {{ code_example_1_res }}</p>
+
+        <p><strong>Amount:</strong> {{ amount }} <strong>Coins:</strong> {{ coins }} </p>
+
+        <!-- ##### EXAMPLE 1 COMMENTS ##### -->
+        <form action="" method="post">
+            {{ change_please_form.csrf_token }}
+            <p>
+                {{ change_please_form.post.label }}<br>
+                {{ change_please_form.post(cols=64, rows=4) }}<br>
+                {% for error in change_please_form.post.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ change_please_form.submit1() }}</p>
+        </form>
+
+        {% for post in change_please_comments %}
+        <p>
+            {% include '_post.html' %}
+        </p>
+        {% endfor %}
+        <hr>
+
+        <!-- ##### EXAMPLE 2 #####-->
+
+        <h2>{{ code_example_2.function_name }}</h2>
+        <div class = "function_description">
+            <p>{{ code_example_2.function_desc }}</p>
+        </div>
+        <h4><strong>Parameters</strong></h4>
+        <p class = "medium_text">{{ code_example_2.param_1_name }}</p>
+        <p class = "medium_text indent">{{ code_example_2.param_1_desc }}</p>
+        <h4><strong>Return</strong></h4>
+        <p class = "medium_text">{{ code_example_2.return_type_name }}: {{code_example_2.return_type_desc }}</p>
+
+        <pre>
+            <code class="language-python">
+                def five_letter_unscramble(string):
+
+                    def histogram_builder(string):
+
+                        histogram_dictionary = dict()
+                        
+                        for letter in string:
+                            if letter not in histogram_dictionary:
+                                histogram_dictionary[letter] = 1
+                            else:
+                                histogram_dictionary[letter] += 1     
+                                
+                        return histogram_dictionary
+        
+                    input_word_histogram = histogram_builder(string)
+
+                    with open('wordle.txt') as fin:
+                        contents = fin.readlines()
+                        words_list = []
+                        for line in contents:
+                            word = line.strip("\n")
+                            words_list.append(word)
+
+                    counter = 0
+                    no_of_matching_words = 0
+                    matching_words = []
+
+                    for word in words_list:
+                        words_list_histogram = histogram_builder(word)
+
+                        for letter in word:
+
+                            if letter in input_word_histogram and words_list_histogram[letter] <= input_word_histogram[letter]:
+                                counter += 1
+
+                            if counter == 5:
+                                matching_words.append(word)
+                                
+                        counter = 0
+
+                    return matching_words
+            </code>
+        </pre>
+
+        <form action="" method="post">
+            {{ code_example_2_form.csrf_token}}
+            <p>
+                {{ code_example_2_form.string.label }}<br>
+                {{ code_example_2_form.string (cols=10, rows=1)}}<br>
+            </p>
+
+            <p>{{ code_example_2_form.submit() }}</p>
+        </form>
+
+        <p><strong>Matching words:</strong> {{ code_example_2_res }} </p>
+        <p><strong>Number of matching words:</strong> {{ number_matching_words }}</p>
+
+        <!-- ##### EXAMPLE 2 COMMENTS ##### -->
+        <form action="" method="post">
+            {{ five_letter_unscramble_form.csrf_token }}
+            <p>
+                {{ five_letter_unscramble_form.post.label }}<br>
+                {{ five_letter_unscramble_form.post(cols=64, rows=4) }}<br>
+                {% for error in five_letter_unscramble_form.post.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ five_letter_unscramble_form.submit2() }}</p>
+        </form>
+
+        {% for post in five_letter_unscramble_comments %}
+        <p>
+            {% include '_post.html' %}
+        </p>
+        {% endfor %}
+        <hr>
+
+        <!-- ##### EXAMPLE 3 #####-->
+
+        <h2>{{ code_example_3.function_name }}</h2>
+        <div class = "function_description">
+            <p>{{ code_example_3.function_desc }}</p>
+        </div>
+        <h4><strong>Parameters</strong></h4>
+        <p class = "medium_text">{{ code_example_3.param_1_name }}</p>
+        <p class = "medium_text indent">{{ code_example_3.param_1_desc }}</p>
+        <h4><strong>Return</strong></h4>
+        <p class = "medium_text">{{ code_example_3.return_type_name }}: {{code_example_3.return_type_desc }}</p>
+
+        <pre>
+            <code class="language-python">
+                def document_stats(filename):
+        
+
+                    num_letters = num_numbers = num_symbols = num_words = num_sentences = 0
+                    num_paragraphs = 1
+                    
+                    fin = open(filename)
+                    data = fin.read()
+                    word_length_file = data.split()
+                    num_words += len(word_length_file)
+                    fin.close()
+
+                    fin_2 = open(filename)
+                    line_list = fin_2.readlines()
+                    text = ''.join(line_list)
+                    fin_2.close()
+
+                    for char in range(0, len(text)):
+
+                        num_letters += text[char].isalpha()
+                        num_numbers += text[char].isnumeric()
+                        num_symbols += text[char].isprintable() and not text[char].isalnum() and not text[char].isspace()
+
+                        if text[char] == "." or text[char] == "!" or text[char] == "?":
+                            num_sentences += 1
+                        if text[char] == "." and text[char-1].isnumeric() and text[char+1].isnumeric():
+                            num_sentences -= 1
+                            
+                        # This adds to the base value of the number of words by checking for errors in the source file.
+                        num_words += text[char].isprintable() and not text[char].isalnum() and not text[char].isspace() and text[char+1].isalpha() and not text[char-1].isspace()
+
+                        if text[char].isprintable() and text[char-1] == "\n" and text[char -2] == "\n":
+                            num_paragraphs += 1
+
+                    output_tuple = (num_letters, num_numbers, num_symbols, num_words, num_sentences, num_paragraphs)
+
+                    return output_tuple
+            </code>
+        </pre>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {{ file_upload_form.csrf_token}}
+            <p>
+                {{ file_upload_form.upload.label }}<br>
+                {{ file_upload_form.upload }}<br>
+            </p>
+
+            {% for error in file_upload_form.upload.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+
+            <p>{{ file_upload_form.submit() }}</p>
+
+            <p><strong>The number of letters:</strong> {{ number_letters }}</p>
+            <p><strong>The number of numbers:</strong> {{ number_numbers }}</p>
+            <p><strong>The number of symbols:</strong> {{ number_symbols }}</p>
+            <p><strong>The number of words:</strong> {{ number_words }}</p>
+            <p><strong>The number of sentences:</strong> {{ number_sentences }}
+            <p><strong>The number of paragraphs:</strong> {{ number_paragraphs }}</p>
+            </p>
+        </form>
+
+        <!-- ##### EXAMPLE 3 COMMENTS ##### -->
+        <form action="" method="post">
+            {{ document_statistics_form.csrf_token}}
+            <p>
+                {{ document_statistics_form.post.label }}<br>
+                {{ document_statistics_form.post(cols=64, rows=4) }}<br>
+                {% for error in document_statistics_form.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ document_statistics_form.submit3() }}</p>
+        </form>
+
+        {% for post in document_statistics_comments %}
+        <p>
+            {% include '_post.html' %}
+        </p>
+        {% endfor %}
+
+{% endblock %}

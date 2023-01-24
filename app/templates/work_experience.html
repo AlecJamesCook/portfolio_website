@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block app_content %}
+
+    <h1>Work Experience</h1>
+ 
+    <p class = "medium_text">This page is a non-exhuastive list of the paid positions I have been employed in. It is non-exhaustive as for most of my time spent teaching I was working at multiple universities or training centres. Since graduating from Swansea University, I have spent most of my working life as a teacher (mostly English, but other subjects too). My time abroad is destined to become my halycon days, but that chapter has closed and I am raring to start the next chapter of my career.</p>
+    <hr>
+
+    <p>{{ job_1.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_1.company_name }}</p>
+    </div>
+    <figure class = "work_figure">
+        <!-- Photo was taken for or by me. I have sole copyright -->
+        <img class = "work_photo" src = "{{ url_for('static', filename='img/' + job_1_photo) }}" alt = "Me with adult students at SYSU">
+    </figure>
+    <h4>{{ job_1.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_1.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_1.body_1 }}</li>
+            <li>{{ job_1.body_2 }}</li>
+            <li>{{ job_1.body_3 }}</li>
+            <li>{{ job_1.body_4 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_1.skill_1}}, {{ job_1.skill_2 }}, {{ job_1.skill_3 }}, {{ job_1.skill_4 }}
+    </p>
+    <hr>
+
+    <p>{{ job_2.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_2.company_name }}</p>
+    </div>
+    <figure class = "work_figure">
+        <!-- Photo was taken for or by me. I have sole copyright -->
+        <img class = "work_photo" src = "{{ url_for('static', filename='img/' + job_2_photo) }}" alt = "Me with some Lingnan college students">
+    </figure>
+    <h4>{{ job_2.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_2.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_2.body_1 }}</li>
+            <li>{{ job_2.body_2 }}</li>
+            <li>{{ job_2.body_3 }}</li>
+            <li>{{ job_2.body_4 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_2.skill_1}}, {{ job_2.skill_2 }}, {{ job_2.skill_3 }}
+    </p>
+    <hr>
+
+    <p>{{ job_3.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_3.company_name }}</p>
+    </div>
+    <figure class = "work_figure">
+        <!-- Photo was taken for or by me. I have sole copyright -->
+        <img class = "work_photo" src = "{{ url_for('static', filename='img/' + job_3_photo) }}" alt = "Presenting my first YouTube video">
+    </figure>
+    <h4>{{ job_3.job_title }}</h4>
+    <p class =  "medium_text"><em>{{ job_3.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_3.body_1 }}</li>
+            <li>{{ job_3.body_2 }}</li>
+            <li>{{ job_3.body_3 }}</li>
+            <li>{{ job_3.body_4 }}<a href = "https://www.youtube.com/watch?v=mgDM_gBowm4">here</a>.</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_3.skill_1}}, {{ job_3.skill_2 }}, {{ job_3.skill_3 }}, {{ job_3.skill_4 }}
+    </p>
+    <hr>
+
+    <p>{{ job_4.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_4.company_name }}</p>
+    </div>
+    <figure class = "work_figure">
+        <!-- Photo was taken for or by me. I have sole copyright -->
+        <img class = "work_photo" src = "{{ url_for('static', filename='img/' + job_4_photo) }}" alt = "Me with a young English student">
+    </figure>
+    <h4>{{ job_4.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_4.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_4.body_1 }}</li>
+            <li>{{ job_4.body_2 }}</li>
+            <li>{{ job_4.body_3 }}</li>
+            <li>{{ job_4.body_4 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_4.skill_1}}, {{ job_4.skill_2 }}, {{ job_4.skill_3 }}
+    </p>
+    <hr>
+
+    <p>{{ job_5.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_5.company_name }}</p>
+    </div>
+    <figure class = "work_figure">
+        <!-- Photo was taken for or by me. I have sole copyright -->
+        <img class = "work_photo" src = "{{ url_for('static', filename='img/' + job_5_photo) }}" alt = "Me with A LZJU class">
+    </figure>
+    <h4>{{ job_5.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_5.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_5.body_1 }}</li>
+            <li>{{ job_5.body_2 }}</li>
+            <li>{{ job_5.body_3 }}</li>
+            <li>{{ job_5.body_4 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_5.skill_1}}, {{ job_5.skill_2 }}, {{ job_5.skill_3 }}, {{ job_5.skill_4 }}
+    </p>
+    <hr>
+
+    <p>{{ job_6.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_6.company_name }}</p>
+    </div>
+    <h4>{{ job_6.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_6.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_6.body_1 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_6.skill_1}}, {{ job_6.skill_2 }}
+    </p>
+    <hr>
+
+    <p>{{ job_7.time_period }}</p>
+    <div class = "company_name">
+        <p>{{ job_7.company_name }}</p>
+    </div>
+    <h4>{{ job_7.job_title }}</h4>
+    <p class = "medium_text"><em>{{ job_7.location }}</em></p>
+    <div class = "job_description">
+        <ul>
+            <li>{{ job_7.body_1 }}</li>
+        </ul>
+    </div>
+    <p class = "medium_text">
+        <strong>Key Skills:</strong> {{ job_7.skill_1}}
+    </p>
+    <hr>
+
+{% endblock %}
