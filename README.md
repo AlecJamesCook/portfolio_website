@@ -1,6 +1,6 @@
-https://www.aleccook.co.uk/index
-
 This is a flask build of a website to serve as my personal portfolio/online CV
+
+Take a look: https://www.aleccook.co.uk
 
 ### Advanced Functions:
 
