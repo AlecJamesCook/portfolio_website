@@ -12,6 +12,10 @@
     text-indent: 20px;
 }
 
+body{
+    background-color: rgb(250, 249, 246);
+}
+
 /*~~~~~ WORK EXPERIENCE ~~~~~*/
 
 .company_name{
@@ -81,4 +85,91 @@ border: 4px solid;
     padding-top: 10px;
     padding-bottom: 5px;
     font-size: medium;
+}
+
+/*~~~~~~ INDEX ~~~~~*/
+
+.about_me_box{
+
+    border: 2px solid;
+    border-radius: 50px;
+    padding: 10px;
+    background-color:snow;
+    font-size: large;
+    padding-bottom: 30px;
+
+}
+
+#profile_pic{
+    max-width: 250px;
+    max-height: 350px;
+    border: 2px solid;
+    border-radius: 25px;
+    position: relative;
+    top:-70px;
+    right: -20px;
+    float:right;
+}
+
+#index_title{
+    text-align: center;
+    font-size: 8em;
+}
+
+.index_intro{
+    text-align: center;
+    font-size: large;
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.about_me{
+    padding: 10px;
+}
+
+.tagline{
+    text-align: center;
+}
+
+.image_box{
+    text-align: center;
+}
+
+.get_in_touch_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.get_in_touch_title{
+    text-align: center;
+    display: block;
+}
+
+.languages{
+    display: inline-block;
+    max-width: 200px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.social_media_box{
+    text-align: center;
+    margin-left: 6em;
+}
+
+.social_media_logo{
+    display: inline-block;
+    max-width: 75px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    margin-right: 2em;
+    margin-bottom: 5em;
 }

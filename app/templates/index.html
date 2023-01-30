@@ -1,31 +1,69 @@
 {% extends "layout.html" %}
-
+{% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
 
-<body>
+<body class = "index_body">
+    <h1 id = "index_title">Alec Cook</h1>
+    <h4 class = "tagline"><em>Programmer | Coder | Designer</em></h4>
 
-    <h1>Hello, {{ current_user.username }}! Thanks for visiting my website</h1>
+    <p class = "index_intro">This website is intended to serve as an online portfolio of sorts. It is a chance for me to showcase some of my education, skills, and experience. The majority of the website is 'dynamic', meaning that the content you will be seeing is being pulled from a database. Check out the navigation bar at the top to find out more about me.<br><br>
+    <a href = "{{ url_for('download') }}"><strong>Download my CV</strong></a><br>
+    ___________________________
+    </p>
+    
 
-    <p class = "introduction">This website is intended to serve as an online portfolio of sorts. It is a chance for me to showcase some of my education, skills, and experience. The majority of the website is 'dynamic', meaning that the content you will be seeing is being pulled from a database. As you'll find out, a few of the websites features also allow you to push content to a database.</p>
+    <img id = "profile_pic" src = "{{ url_for('static', filename='img/profile_pic.jpg') }}">
 
-    <h4><strong>The website has five pages for you to browse through: </strong></h4>
+    <div class = "about_me_box">
+        <h2><strong>About me: </strong></h2>
+        <p class = "about_me">I am currently studying MSc Computing at Cardiff University. I have a thing for languages, history, and computers. Trying (unsuccessfully) to find a way to combine these interests.</p>
+        <p class = "about_me">I have been working abroad in education for the past few years and would love to find a way to combine my passion for education with my software engineering skills.</p>
+        <p class = "about_me">I am proficient in the following programming languages: </p>
+        <div class = "image_box">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/python_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/java_script_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/c_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/html_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/css_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/mysql_logo.png') }}">
+            <img class = "languages" src = "{{ url_for('static', filename='logos/php_logo.png') }}">
+        </div>
+    </div>
 
-    <ul class = "medium_text">
-        <li>If you are interested in checking out your profile page (where you can view your post history on this website, and add a bit more information about yourself) please click <a href="{{ url_for('user', username=current_user.username) }}">here</a>.</li>
-        <li>If you are interested in finding out more details about my previous qualifications and education, please click <a href = "{{ url_for('education') }}">here</a>.</li>
-        <li>If you are interested in finding out more about my previous work experience, please click <a href = "{{ url_for('work_experience') }}">here</a>.</li>
-        <li>If you are interested in learning more about my current studies, please click <a href = "{{ url_for('computing') }}">here</a>.</li>
-        <li>If you would like to see some examples of some code I have written, please click <a href="{{ url_for('code_examples') }}">here</a>.</li>
-    </ul>
+    <h3 class = "get_in_touch_title"><strong>Have a question? Get in touch</strong></h3>
+    <div class= "get_in_touch_box">
+        <div class="col-md-4 get_in_touch_form">
+            <form action="" method="post">
+                {{ form.csrf_token }}
+                <p>
+                    {{ form.name.label }}<br>
+                    {{ form.name(cols=50, rows=1) }}<br>
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
 
-    <p class = "medium_text">Or you could just use the navigation bar at the top. Thanks for visiting!</p>
-    <p class = "medium_text"><strong>Get in touch: </strong></p>
-    <ul class= "medium_text">
-        <li>Email: CookAj1@cardiff.ac.uk</li>
-        <li><a href = "https://www.linkedin.com/in/alec-cook/">LinkedIn</a></li>
-        <li><a href = "https://www.facebook.com/alec.cook.397">Facebook</a></li>
-        <li><a href = "https://twitter.com/AlecCook92">Twitter</a></li>
-    </ul>
+                    {{ form.email_address.label }}<br>
+                    {{ form.email_address(cols=50, rows=1) }}<br>
+                    {% for error in form.email_address.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+
+                    {{ form.content.label }}<br>
+                    {{ form.content(cols=50, rows=6) }}<br>
+                    {% for error in form.content.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}                    
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+    </div>
+
+    <div class = "social_media_box">
+        <a href = "https://www.linkedin.com/in/alec-cook/"><img class = "social_media_logo" src = "{{ url_for('static', filename='logos/linked_in_logo.png') }}"></a>
+        <a href = "https://www.facebook.com/alec.cook.397"><img class = "social_media_logo" src = "{{ url_for('static', filename='logos/facebook_logo.png') }}"></a>
+        <a href = "https://twitter.com/AlecCook92"><img class = "social_media_logo" src = "{{ url_for('static', filename='logos/twitter_logo.png') }}"></a>
+    </div>
 </body>
 
 {% endblock %}

@@ -31,17 +31,21 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('login') }}">Login |</a></li>
+                    <li><a href="{{ url_for('education') }}">Education |</a></li>
+                    <li><a href="{{ url_for('work_experience') }}">Work Experience |</a></li>
+                    <li><a href="{{ url_for('computing') }}">MSc Computing |</a></li>
+                    <li><a href="{{ url_for('code_examples') }}">Code Examples |</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-                    <li><a href="{{ url_for('education') }}">Education</a></li>
-                    <li><a href="{{ url_for('work_experience') }}">Work Experience</a></li>
-                    <li><a href="{{ url_for('computing') }}">MSc Computing</a></li>
-                    <li><a href="{{ url_for('code_examples') }}">Code Examples</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">Profile |</a></li>
+                    <li><a href="{{ url_for('education') }}">Education |</a></li>
+                    <li><a href="{{ url_for('work_experience') }}">Work Experience |</a></li>
+                    <li><a href="{{ url_for('computing') }}">MSc Computing |</a></li>
+                    <li><a href="{{ url_for('code_examples') }}">Code Examples |</a></li>
+                    <li><a href="{{ url_for('logout') }}"> Logout |</a></li>
                     {% endif %}
                     {% if current_user.is_admin %}
-                    <li><a href = "/admin">Admin</a></li>
+                    <li><a href = "/admin"> Admin |</a></li>
                     {% endif %}
                 </ul>
             </div>

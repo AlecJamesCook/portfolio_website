@@ -1,6 +1,6 @@
-from flask import render_template, flash, redirect, url_for, request, abort
+from flask import render_template, flash, redirect, url_for, request, abort, send_file
 from app import app, db, mail
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Code_example_1_form, Code_example_2_form, File_upload_form, PostForm1, PostForm2, PostForm3, RequestPasswordResetForm, PasswordResetForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Code_example_1_form, Code_example_2_form, File_upload_form, PostForm1, PostForm2, PostForm3, RequestPasswordResetForm, PasswordResetForm, GetInTouchForm
 from app.models import User, Post, Work_experience, Education, Computing, Code_examples
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_mail import Message
@@ -23,10 +23,34 @@ def before_request():
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
-@login_required
 def index():
 
-    return render_template('index.html', title = 'Home')
+    form = GetInTouchForm()
+
+    def GetInTouchEmail(form):
+        email = 'alecjamescook@hotmail.co.uk'
+        msg = Message('Someone wants to get in touch!', sender ='aleccookportfolio@gmail.com', recipients = [email])
+        msg.body = "Name: {name} - Email: {email_address} - Content: {content}".format(
+        name=form.name.data,
+        email_address=form.email_address.data,
+        content=form.content.data
+    )
+        mail.send(msg)
+
+        return render_template('index.html', title = 'Home', form = form)
+
+    if form.validate_on_submit():
+        GetInTouchEmail(form)
+        flash('Email sent!')
+        return redirect(url_for('index'))
+
+    return render_template('index.html', title = 'Home', form = form)
+
+@app.route('/download')
+def download():
+    path = (os.path.join(app.config['DOWNLOADS'], 'Alec_Cook_CV.pdf'))
+    return send_file(path, as_attachment=True)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -91,7 +115,6 @@ def user(username):
     return render_template('user.html', user=user, posts = posts)
 
 @app.route('/edit_profile', methods = ['GET', 'POST'])
-@login_required
 def edit_profile():
 
     form = EditProfileForm(current_user.username)
@@ -162,7 +185,6 @@ def reset_token(token):
 
 # End of referenced code
  
-@login_required
 @app.route('/education')
 def education():
 
@@ -190,7 +212,6 @@ def education():
         education_4_photo = education_4_photo
         )
 
-@login_required
 @app.route('/work_experience')
 def work_experience():
 
@@ -227,7 +248,6 @@ def work_experience():
         job_7 = job_7, 
         )
 
-@login_required
 @app.route('/computing')
 def computing():
 
@@ -248,7 +268,6 @@ def computing():
         module_5 = module_5, 
         module_6 = module_6)
 
-@login_required
 @app.route('/code_examples', methods = ['GET', 'POST'])
 def code_examples():
 
@@ -455,6 +474,11 @@ def code_examples():
     # Handling the different forms
     if change_please_form.submit1.data and change_please_form.validate():
 
+        if current_user.is_anonymous:
+            
+            flash('You must be logged in to leave a comment')
+            return redirect(url_for('code_examples'))
+
         change_please_post = Post(body = change_please_form.post.data, tag = "change_please", author = current_user)
         db.session.add(change_please_post)
         db.session.commit()
@@ -463,6 +487,11 @@ def code_examples():
         return redirect(url_for('code_examples'))
 
     if five_letter_unscramble_form.submit2.data and five_letter_unscramble_form.validate():
+
+        if current_user.is_anonymous:
+            
+            flash('You must be logged in to leave a comment')
+            return redirect(url_for('code_examples'))
 
         five_letter_unscramble_post = Post(body = five_letter_unscramble_form.post.data, tag = "five_letter_unscramble", author = current_user)
         db.session.add(five_letter_unscramble_post)
@@ -473,13 +502,17 @@ def code_examples():
     
     if document_statistics_form.submit3.data and document_statistics_form.validate():
 
+        if current_user.is_anonymous:
+            
+            flash('You must be logged in to leave a comment')
+            return redirect(url_for('code_examples'))
+
         document_statistics_post = Post(body = document_statistics_form.post.data, tag = "document_unscramble", author = current_user)
         db.session.add(document_statistics_post)
         db.session.commit()
         flash('Comment posted')
 
         return redirect(url_for('code_examples'))
-
 
     if code_example_1_form.validate_on_submit():
 

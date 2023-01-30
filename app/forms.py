@@ -50,6 +50,12 @@ class PasswordResetForm(FlaskForm):
     password2 = PasswordField('Please retype your new password', validators=[DataRequired(), EqualTo('password', message = 'Passwords do not match. Please try again.'), ])
     submit = SubmitField('Update Password')
 
+class GetInTouchForm(FlaskForm):
+    name = TextAreaField('Name')
+    email_address = TextAreaField('Email (for reference)')
+    content = TextAreaField('Message')
+    submit = SubmitField('Send')
+
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     about_me = TextAreaField('About me', validators=[Length(min=0, max =140)])

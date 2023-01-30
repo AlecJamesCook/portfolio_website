@@ -7,15 +7,25 @@ from flask_moment import Moment
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_mail import Mail
-import pymysql
+import mysql.connector
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://c1123652:Liverp00l001!@csmysql.cs.cf.ac.uk:3306/c1123652_portfolio'
-app.config['SECRET_KEY'] = '879dd461d269f89c799c52abf49af8c59477c445849953e4'
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+    username="IronChef",
+    password="Liverp00l001!",
+    hostname="IronChef.mysql.eu.pythonanywhere-services.com",
+    databasename="IronChef$portfolio_website",
+)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_PATH'] = 'app/static/uploads'
+app.config['DOWNLOADS'] ='static\\downloads'
+
+# Mail server
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
 app.config['MAIL_PORT'] = '587'
 app.config['MAIL_USE_TLS'] = True
