@@ -5,7 +5,7 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Le
 from app.models import User, Post
 
 class LoginForm(FlaskForm):
-    
+
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
@@ -88,6 +88,10 @@ class PostForm3(FlaskForm):
     post = TextAreaField('Leave a comment', validators = [DataRequired(), Length(min = 1, max = 300)])
     submit3 = SubmitField('Post comment')
 
+class PostForm4(FlaskForm):
+    post = TextAreaField('Leave a comment', validators = [DataRequired(), Length(min = 1, max = 300)])
+    submit4 = SubmitField('Post comment')
+
 class Code_example_1_form(FlaskForm):
     amount = FloatField('Please enter an amount: ', validators= [DataRequired()])
     coins = IntegerField('Please enter the amount of coins: ', validators= [DataRequired()])
@@ -100,4 +104,8 @@ class Code_example_2_form(FlaskForm):
 class File_upload_form(FlaskForm):
     upload = FileField('File', validators=[FileRequired(), FileAllowed(['txt'], 'Invalid File Type. Must be .txt')])
     submit = SubmitField('Upload')
+
+class Wan_wang_form(FlaskForm):
+    arabicNumber = StringField('Enter the number here: ', validators = [DataRequired(), Length(min = 1, max = 12, message = 'Numbers can only be up to 12 digits in length'), Regexp('^[0-9]+$', message = 'We can\'t convert letters!')])
+    submit = SubmitField('Convert')
 

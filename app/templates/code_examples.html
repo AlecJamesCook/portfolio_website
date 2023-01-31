@@ -14,7 +14,7 @@
         <h4><strong>Parameters</strong></h4>
         <p class = "medium_text">{{ code_example_1.param_1_name }}</p>
         <p class = "medium_text indent">{{ code_example_1.param_1_desc }}</p>
-        <p class = "medium_text">{{ code_example_1.param_2_name }}</p> 
+        <p class = "medium_text">{{ code_example_1.param_2_name }}</p>
         <p class = "medium_text indent">{{ code_example_1.param_2_desc }}</p>
         <h4><strong>Return</strong></h4>
         <p class = "medium_text">{{ code_example_1.return_type_name }}: {{code_example_1.return_type_desc }}</p>
@@ -108,15 +108,15 @@
                     def histogram_builder(string):
 
                         histogram_dictionary = dict()
-                        
+
                         for letter in string:
                             if letter not in histogram_dictionary:
                                 histogram_dictionary[letter] = 1
                             else:
-                                histogram_dictionary[letter] += 1     
-                                
+                                histogram_dictionary[letter] += 1
+
                         return histogram_dictionary
-        
+
                     input_word_histogram = histogram_builder(string)
 
                     with open('wordle.txt') as fin:
@@ -140,7 +140,7 @@
 
                             if counter == 5:
                                 matching_words.append(word)
-                                
+
                         counter = 0
 
                     return matching_words
@@ -195,11 +195,11 @@
         <pre>
             <code class="language-python">
                 def document_stats(filename):
-        
+
 
                     num_letters = num_numbers = num_symbols = num_words = num_sentences = 0
                     num_paragraphs = 1
-                    
+
                     fin = open(filename)
                     data = fin.read()
                     word_length_file = data.split()
@@ -221,7 +221,7 @@
                             num_sentences += 1
                         if text[char] == "." and text[char-1].isnumeric() and text[char+1].isnumeric():
                             num_sentences -= 1
-                            
+
                         # This adds to the base value of the number of words by checking for errors in the source file.
                         num_words += text[char].isprintable() and not text[char].isalnum() and not text[char].isspace() and text[char+1].isalpha() and not text[char-1].isspace()
 
@@ -275,4 +275,55 @@
         </p>
         {% endfor %}
 
+
+        <!-- ##### EXAMPLE 4 #####-->
+
+        <h2>{{ code_example_4.function_name }}</h2>
+        <div class = "function_description">
+            <p>{{ code_example_4.function_desc }}</p>
+        </div>
+        <h4><strong>Parameters</strong></h4>
+        <p class = "medium_text">{{ code_example_4.param_1_name }}</p>
+        <p class = "medium_text indent">{{ code_example_4.param_1_desc }}</p>
+        <h4><strong>Return</strong></h4>
+        <p class = "medium_text">{{ code_example_4.return_type_name }}: {{code_example_4.return_type_desc }}</p>
+        <figure>
+            <img src = "{{ url_for('static', filename='img/chinese_number_converter.png') }}" alt = "A picture of the Chinese number converter website">
+        </figure>
+        <br>
+        <p class = "medium_text">Try it out for yourself: <a href = https://www.chinesenumberconverter.net>www.chinesenumberconverter.net</a></p>
+
+        <form action="" method="post">
+            {{ code_example_4_form.csrf_token}}
+            <p>
+                {{ code_example_4_form.arabicNumber.label }}<br>
+                {{ code_example_4_form.arabicNumber (cols=10, rows=1)}}<br>
+            </p>
+
+            <p>{{ code_example_4_form.submit() }}</p>
+        </form>
+
+        <p><strong>Arabic Number:</strong> {{ arabic_number }}</p>
+        <p><strong>Pinyin:</strong> {{ pinyin_number }}</p>
+        <p><strong>Character:</strong> {{ character_number }}</p>
+
+        <!-- ##### EXAMPLE 4 COMMENTS ##### -->
+        <form action="" method="post">
+            {{ wan_wang_form.csrf_token}}
+            <p>
+                {{ wan_wang_form.post.label }}<br>
+                {{ wan_wang_form.post(cols=64, rows=4) }}<br>
+                {% for error in wan_wang_form.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ wan_wang_form.submit4() }}</p>
+        </form>
+
+        {% for post in wan_wang_comments %}
+        <p>
+            {% include '_post.html' %}
+        </p>
+        {% endfor %}
+        <br>
 {% endblock %}
