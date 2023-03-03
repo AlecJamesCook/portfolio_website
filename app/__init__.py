@@ -19,8 +19,8 @@ app = Flask(__name__)
 
 #for python anywhere
 # SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-#     username="IronChef",
-#     password="Liverp00l001!",
+#     username="#####",
+#     password="#####",
 #     hostname="IronChef.mysql.eu.pythonanywhere-services.com",
 #     databasename="IronChef$portfolio_website",
 # )
@@ -28,7 +28,7 @@ app = Flask(__name__)
 # app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 
 #for localhost
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://c1123652:Liverp00l001!@csmysql.cs.cf.ac.uk:3306/c1123652_portfolio'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://#####:#####@csmysql.cs.cf.ac.uk:3306/c1123652_portfolio'
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config['SECRET_KEY'] = '879dd461d269f89c799c52abf49af8c59477c445849953e4'
